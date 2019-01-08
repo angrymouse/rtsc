@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RTSC LOGIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+    <style>
+    #copyright {
+position: absolute;
+bottom: 1em;
+right: 1em;
+text-align: right;
+color:green;
+}
+ 
+    </style>
+    <form action="/" method="POST">
+        <div style="display: block" align="center">
+    <input type="text" placeholder="Username" name="login"><br>
+    <input type="password" placeholder="Password" name="password"><br>
+    <input type="submit" value="Login">
+    <div style="color: red"><%- loginstatus %> </div>
+        </div>
+    </form>
+    <h4 id="copyright">RTSC</h4>
+</body>
+</html>

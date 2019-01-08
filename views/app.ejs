@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RTSC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <div style="display:block;width:0%;height:0%;visibility:hidden;">
+    <p id="password"><%= password%></p>
+    <p id="login"><%= login%></p>
+    </div>
+    <style>
+    #log{
+        height: 40vh;
+    }
+    body{
+        margin: 0%;
+
+    }
+  
+    #header {
+position: absolute;
+top: 1em;
+left: 1em;
+text-align: right;
+color:green;
+}
+ 
+#header2 {
+position: absolute;
+top: 1em;
+right: 1em;
+text-align: right;
+color:green;
+}
+    </style>
+<p id="header">RTSC on <%=os%></p>
+    <form action="/ui" method="post" id="header2">
+    <input type="submit" value="User interface">  
+      <input style="visibility: hidden;width: 0vh;height: 0vh;display: block;" name="login" value='<%= login %>' class="login">
+    <input style="visibility: hidden;width: 0vh;height: 0vh;display: block;" name="password" value="<%= password %>" class="password">
+  
+
+</form>
+    <center>
+    <form action="/" method="post" id="form" >
+        <div> 
+             <textarea  name="log" id="log" style="width: 100vh; height: 80vh;" ><%- logged %></textarea><br>
+          
+                   <p> <input type="text" name="command" id="command" style="width:80vh">
+                    <input type="submit" onclick="sbmt()" value="Send command">
+                    </p>
+                 
+   <br></div>
+
+    <input style="visibility: hidden;width: 0vh;height: 0vh;display: block;" name="login" value='<%= login %>' class="login">
+    <input style="visibility: hidden;width: 0vh;height: 0vh;display: block;" name="password" value="<%= password %>" class="password">
+    </form>
+</center>
+<div style="display:block;position:absolute;width:0%;height:0%;visibility:hidden;">
+<p id="loginEnc"><%=usernameEnc%></p>
+<p id="passwordEnc"><%=passwordEnc%></p>
+</div>
+    <script>
+ 
+document.cookie=`login=${document.getElementById('loginEnc').innerHTML}`
+document.cookie=`password=${document.getElementById('passwordEnc').innerHTML}`
+    function sbmt() {
+        var command=document.getElementById('command')
+        var log=document.getElementById('log')
+      
+        log.innerHTML=log.innerHTML+'\n'+`$ ${command.value}`
+
+    }
+    
+    </script>
+</body>
+</html>

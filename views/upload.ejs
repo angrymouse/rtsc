@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RTSC file uploader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="/socket.io/socket.io.js" >
+    </script>
+    <script src="/siofu/client.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <h1 style="color:rgb(2, 1, 104);" align="center">RTSC file uploader</h1>
+    <div style="display:block;position:absolute;top:50%;left:40%;background-color: greenyellow" align="center">
+
+        <input type="file" id="file_input" /><br>
+        <button id="my_button">Upload File</button>
+        </div>
+        <script>
+        var socket = io.connect('/upload');
+                var uploader = new SocketIOFileUpload(socket);
+
+                uploader.listenOnSubmit(document.getElementById("my_button"), document.getElementById("file_input"))
+                </script>
+   
+
+</body>
+</html>

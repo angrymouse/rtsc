@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Screen demontration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="/socket.io/socket.io.js" >
+        </script>
+
+</head>
+
+
+<body>
+        <img style="position:absolute;display:block;width:95%;height:95%" id="screen"/>
+        <script type="text/javascript">
+        var socket = io.connect('/demo');
+        
+        
+        
+        socket.on("image", function(info) {
+          if (info.image) {
+            var img = document.getElementById('screen')
+            img.src = 'data:image/jpeg;base64,' + info.buffer;
+          }
+        });
+        </script>
+</body>
+</html>

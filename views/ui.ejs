@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RTSC User Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+       <style> #header {
+            position: absolute;
+            top: 1em;
+            left: 1em;
+            text-align: right;
+            color:green;
+            }
+             
+            #header2 {
+position: absolute;
+top: 1em;
+right: 1em;
+text-align: right;
+color:green;
+} 
+                </style>
+        <p id="header">RTSC on <%=os%></p>
+        <form action="/" method="post" id="header2">
+            <input type="submit" value="Terminal">  
+              <input style="visibility: hidden;width: 0vh;height: 0vh;display: block;" name="login" value='<%= login %>' class="login">
+            <input style="visibility: hidden;width: 0vh;height: 0vh;display: block;" name="password" value="<%= password %>" class="password">
+        </form>
+        <center>
+ <div >
+<input type="button" onclick="powermain()" value="Power">
+<input type="button" onclick="openmain()" value="Open">
+<input type="button" onclick="uploadmain()" value="Upload files">
+<input type="button" onclick="window.open('/demo')" value="Screen">
+<p style="display:block;width:40vh;height:40vh;background-color:#d1ffd6;" id="uicontent">
+
+</p>
+</div>
+</center>
+
+
+
+    <form action="/ui" method="POST" id="form" style="visibility: hidden;width: 0vh;display: block;height: 0vh">
+        <input name="login" value='<%=login%>' id="login">
+        <input name="password" value='<%=password%>' id="password">
+        <input id="command" name="command" value=''>
+        <div id="os" style="visibility: hidden;width: 0vh;display: block;height: 0vh"><%=os%></div>
+    </form>
+
+
+    <script>
+        var login=document.getElementById("login")
+        var password=document.getElementById("password")
+        function sendcommand(command) {
+            document.getElementById('command').value=command
+document.getElementById('form').submit()
+        }
+        function sendurl(command) {
+            document.getElementById('command').value=command
+document.getElementById('form').action="/uiw"
+document.getElementById("form").submit()
+        }
+var demonstation
+        var os=document.getElementById('os').innerHTML
+       var main= document.getElementById('uicontent')
+       function openmain(){
+           main.innerHTML=`
+          <input type="text" id="toopen" placeholder="file or URL to open"> <br>
+          <input type="button" onclick="openfile()" value="Open file"><br>
+          <input type="button" onclick="openurl()" value="Open URL"><br>
+          
+           `
+       }
+    function powermain() {
+        main.innerHTML=`
+        <input type='button' onclick='poweroff()' value="Power off"><br>
+        <input type='button' onclick='reboot()' value="Reboot">
+        `
+    }
+    function screendemo() {
+        main.innerHTML=`
+        <iframe style="display:block;width:100%;height:100%" id="demo" src="/demo">
+        `
+        document.getElementById('demo').style.width=main.width;
+        document.getElementById('demo').style.height=main.height;
+    }
+    function openfile() {
+        sendcommand(document.getElementById('toopen').value)
+        
+    }
+    function openurl() {
+sendurl(document.getElementById('toopen').value)
+    }
+    function reboot() {
+        if(os=='win32'){
+            sendcommand('shutdown /r /f /t 0')
+        }else{
+            sendcommand('shutdown -r now')
+        }
+    }
+    function poweroff() {
+        
+        if(os=='win32'){
+sendcommand('shutdown -s -t 0 -f')
+        }else{
+sendcommand('shutdown -h now')
+        }
+    }
+function uploadmain() {
+window.open('/upload')
+}
+
+    </script>
+</body>
+</html>
