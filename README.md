@@ -1,7 +1,7 @@
 # Remote Tunneling Server Controller 
 RTSC is a tool, there can control computer from web-interface.
 Supports on Linux, Windows, MacOS, Raspberry PI, Solaris.
-![Image alt](https://fs19.fex.net/get/268262354512/1082749042/136f18e4/logo.png)
+![Image alt](https://www.nikitarykov.ml/rtsc/rtsc_logo.png)
 ## Installation ##
 **Windows:**
 ```
