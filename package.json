@@ -1,0 +1,44 @@
+{
+  "_args": [
+    [
+      "rtsc",
+      "/usr/local/bin"
+    ]
+  ],
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "rtsc",
+    "raw": "rtsc",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "name": "rtsc",
+  "version": "1.8.19",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nikita",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie": "^0.3.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "localtunnel": "*",
+    "openurl": "^1.1.1",
+    "screenshot-desktop": "^1.5.4",
+    "socket.io": "^2.2.0",
+    "socketio-file-upload": "^0.7.0"
+  },
+  "_where": "/usr/local/bin",
+  "bin": {
+    "rtsc": "./app.js"
+  }
+}
